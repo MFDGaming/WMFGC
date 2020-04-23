@@ -73,7 +73,8 @@ class Wilderness extends PluginBase{
 		}
 
 		$pos = new Vector3($x, $y, $z);
-		if($player->teleport($this->do_safe_spawn ? $level->getSafeSpawn($pos) : Position::fromObject($pos, $level))){
+		$level2 = $this->getServer()->getLevelByName("FactionsWorld");
+		if($player->teleport($this->do_safe_spawn ? $level->getSafeSpawn($pos) : Position::fromObject($pos, $level2))){
 			$player->sendMessage($this->language->translate("on-teleport", [
 				"{PLAYER}" => $player->getName(),
 				"{X}" => $x,
